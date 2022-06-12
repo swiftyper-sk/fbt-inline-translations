@@ -33,7 +33,7 @@ class App extends React.Component<Props, State> {
 
     componentDidMount() {
         document.addEventListener(
-            'click',
+            'contextmenu',
             this.openTranslationDialog.bind(this)
         )
     }
