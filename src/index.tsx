@@ -13,7 +13,7 @@ type AppProps = {
 
 const swiftyperInlineTranslations = (props: AppProps) => {
     if (props.darkMode) {
-        document.documentElement.classList.add('dark')
+        document.documentElement.classList.add('tw-dark')
     }
 
     ReactDOM.render(

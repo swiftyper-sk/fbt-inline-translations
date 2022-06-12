@@ -1,6 +1,6 @@
 # 👽 Inline translations for FBT
 
-![Demo of FBT inline translating](images/demo.gif)
+![Demo of FBT inline translating](https://raw.githubusercontent.com/swiftyper-sk/fbt-inline-translations/main/images/demo.gif)
 
 
 ## ℹ️ Usage notes
@@ -22,7 +22,7 @@ Register your FBT project on [Swiftyper Translations](https://translations.swift
 
 ### Non-React usage
 
-Add this code to page your page:
+Add this code to your page:
 
 ```html
 <div id="inline-translator"></div>
@@ -33,7 +33,7 @@ Add this code to page your page:
         token: 'YOUR_API_KEY_HERE',
         locale: 'sk_SK', // translation locale
         contributor: 'contributor@email.com', // contributor must be invited
-        darkMode: false, // dark mode also depends on html class 'dark'
+        darkMode: false, // dark mode also depends on html class 'tw-dark'
     })
 </script>
 ```

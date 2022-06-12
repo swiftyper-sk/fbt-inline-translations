@@ -55,6 +55,8 @@ class App extends React.Component<Props, State> {
                 hash,
                 locale,
             })
+
+            event.preventDefault()
         }
     }
 
