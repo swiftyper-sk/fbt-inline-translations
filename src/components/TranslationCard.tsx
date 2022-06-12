@@ -40,11 +40,11 @@ export default function TranslationCard({ hash, hide }: Props) {
     if (error) {
         return (
             <>
-                <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
-                    <HiExclamation className="h-6 w-6 text-red-600" />
+                <div className="tw-mx-auto tw-flex tw-items-center tw-justify-center tw-h-12 tw-w-12 tw-rounded-full tw-bg-red-100">
+                    <HiExclamation className="tw-h-6 tw-w-6 tw-text-red-600" />
                 </div>
-                <div className="mt-3 text-center sm:mt-5">
-                    <h3 className="mb-0 text-lg leading-6 font-medium text-gray-900 dark:text-white">
+                <div className="tw-mt-3 tw-text-center sm:tw-mt-5">
+                    <h3 className="tw-mb-0 tw-text-lg tw-leading-6 tw-font-medium tw-text-gray-900 dark:tw-text-white">
                         {error || 'Invalid request'}
                     </h3>
                 </div>
@@ -55,9 +55,9 @@ export default function TranslationCard({ hash, hide }: Props) {
     if (loading && !phrase) {
         return (
             <>
-                <div className="mx-auto flex items-center justify-center h-12 w-12 loader" />
-                <div className="mt-3 text-center sm:mt-5">
-                    <h3 className="mb-0 text-lg leading-6 font-medium text-gray-900 dark:text-white">
+                <div className="tw-mx-auto tw-flex tw-items-center tw-justify-center tw-h-12 tw-w-12 loader" />
+                <div className="tw-mt-3 tw-text-center sm:tw-mt-5">
+                    <h3 className="tw-mb-0 tw-text-lg tw-leading-6 tw-font-medium tw-text-gray-900 dark:tw-text-white">
                         Loading...
                     </h3>
                 </div>
@@ -68,7 +68,7 @@ export default function TranslationCard({ hash, hide }: Props) {
     return (
         <>
             <PhraseOverview phrase={phrase!} />
-            <div className="m-0 p-0 divide-y divide-solid divide-gray-300 dark:divide-gray-700 dark:text-white">
+            <div className="tw-m-0 tw-p-0 tw-divide-y tw-divide-solid tw-divide-gray-300 dark:tw-divide-gray-700 dark:tw-text-white">
                 {phrase!.translations.map((translation, index) => (
                     <Candidate
                         candidate={translation}

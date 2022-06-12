@@ -10,8 +10,8 @@ export default function PhraseOverview({ phrase }: Props) {
 
     return (
         <div>
-            <div className="text-md text-gray-900 dark:text-white">{text}</div>
-            <div className="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-3">
+            <div className="tw-text-md tw-text-gray-900 dark:tw-text-white">{text}</div>
+            <div className="tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-mt-1 tw-mb-3">
                 {description}
             </div>
         </div>

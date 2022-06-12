@@ -68,9 +68,9 @@ class App extends React.Component<Props, State> {
         return (
             <Rodal
                 customStyles={{ height: 'auto', bottom: 'auto', top: 'auto' }}
-                className="flex items-center overflow-auto"
-                enterAnimation=" rodal-zoom-enter dark:bg-gray-800 " // ugly hack
-                leaveAnimation=" rodal-fade-leave dark:bg-gray-800 " // ugly hack
+                className="tw-flex tw-items-center tw-overflow-auto"
+                enterAnimation=" rodal-zoom-enter dark:tw-bg-gray-800 " // ugly hack
+                leaveAnimation=" rodal-fade-leave dark:tw-bg-gray-800 " // ugly hack
                 visible={this.state.visible}
                 onClose={this.hide}
             >

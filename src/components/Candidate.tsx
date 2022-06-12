@@ -12,15 +12,15 @@ export default function Candidate({ candidate, onClick, onVote }: Props) {
     const { translation } = candidate
 
     return (
-        <div className="translation flex gap-2 hover:cursor-pointer py-2 text-md items-center relative border-0">
+        <div className="tw-flex tw-gap-2 hover:tw-cursor-pointer tw-py-2 tw-text-md tw-items-center tw-relative tw-border-0">
             {candidate.voted ? (
                 <HiCheckCircle
-                    className="text-xl text-blue-600"
+                    className="tw-text-xl tw-text-blue-600"
                     onClick={() => onVote(candidate.id)}
                 />
             ) : (
                 <HiOutlineCheckCircle
-                    className="text-xl text-gray-500"
+                    className="tw-text-xl tw-text-gray-500"
                     onClick={() => onVote(candidate.id)}
                 />
             )}
