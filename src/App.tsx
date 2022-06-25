@@ -76,7 +76,7 @@ class App extends React.Component<Props, State> {
                 visible={this.state.visible}
                 onClose={this.hide}
             >
-                <TranslationCard hash={hash} hide={this.hide} />
+                <TranslationCard key={hash} hash={hash} hide={this.hide} />
             </Rodal>
         )
     }

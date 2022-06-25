@@ -6,6 +6,11 @@
     font-family: 'Roboto', sans-serif;
 }
 
+.tw-dark #inline-translator .rodal-close:hover:before,
+.tw-dark #inline-translator .rodal-close:hover:after {
+    background: #fff;
+}
+
 #inline-translator .loader {
     border: 5px solid #bebebe;
     border-bottom-color: transparent;
