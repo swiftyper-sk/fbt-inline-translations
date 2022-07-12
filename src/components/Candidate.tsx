@@ -12,7 +12,7 @@ export default function Candidate({ candidate, onClick, onVote }: Props) {
     const { translation } = candidate
 
     return (
-        <div className="tw-flex tw-gap-2 hover:tw-cursor-pointer tw-py-2 tw-text-md tw-items-center tw-relative tw-border-0 tw-break-all">
+        <div className="tw-flex tw-gap-2 hover:tw-cursor-pointer tw-py-2 tw-text-md tw-items-center tw-relative tw-border-0 tw-break-words">
             {candidate.voted ? (
                 <HiCheckCircle
                     className="tw-text-xl tw-text-blue-600 tw-min-w-[20px]"
