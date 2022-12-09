@@ -1,5 +1,13 @@
 # 👽 Inline translations for FBT
 
+The extension serves to effectively translate your application using inline translations so that you can view strings you are
+translating in context.
+If you right-click on the underlined string, the translation dialog appears and you will be able to vote for the available translations or submit a new one.
+
+You can make translations available to your translators, users, or the entire community and make your product multilingual.
+
+**Translations can also be approved by your trusted translator(s).**
+
 ![Demo of FBT inline translating](https://raw.githubusercontent.com/swiftyper-sk/fbt-inline-translations/main/images/demo.gif)
 
 
