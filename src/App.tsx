@@ -8,7 +8,6 @@ import 'rodal/lib/rodal.css'
 import 'typeface-roboto'
 import './App.css'
 
-// eslint-disable-next-line
 type Props = {}
 
 type State = {
@@ -42,7 +41,6 @@ class App extends React.Component<Props, State> {
         let parent: HTMLElement | null = event.target as HTMLElement
 
         while (parent) {
-            console.log(parent.outerHTML)
             if (
                 parent.classList.contains('intlInlineMode_normal') ||
                 parent.classList.contains('intlInlineMode_translatable') ||
@@ -73,18 +71,22 @@ class App extends React.Component<Props, State> {
 
     render() {
         const { hash } = this.state
+        const { children } = this.props
 
         return (
-            <Rodal
-                customStyles={{ height: 'auto', bottom: 'auto', top: 'auto' }}
-                className="tw-flex tw-items-center tw-overflow-auto"
-                enterAnimation=" rodal-zoom-enter dark:tw-bg-gray-800 " // ugly hack
-                leaveAnimation=" rodal-fade-leave dark:tw-bg-gray-800 " // ugly hack
-                visible={this.state.visible}
-                onClose={this.hide}
-            >
-                <TranslationCard key={hash} hash={hash} hide={this.hide} />
-            </Rodal>
+            <>
+                {children}
+                <Rodal
+                    customStyles={{ height: 'auto', bottom: 'auto', top: 'auto' }}
+                    className="tw-flex tw-items-center tw-overflow-auto"
+                    enterAnimation=" rodal-zoom-enter dark:tw-bg-gray-800 " // ugly hack
+                    leaveAnimation=" rodal-fade-leave dark:tw-bg-gray-800 " // ugly hack
+                    visible={this.state.visible}
+                    onClose={this.hide}
+                >
+                    <TranslationCard key={hash} hash={hash} hide={this.hide} />
+                </Rodal>
+            </>
         )
     }
 }

@@ -9,7 +9,7 @@ type Props = {
     token: string
     locale: string
     contributor: string
-    darkMode: boolean
+    darkMode?: boolean
 }
 
 export const SwiftyperProvider = ({ children, ...props }: Props) => {

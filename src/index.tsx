@@ -4,29 +4,36 @@ import App from './App'
 import { SwiftyperProvider } from './providers/swiftyper'
 import { SwiftyperServiceProvider } from './contexts/SwiftyperServiceContext'
 
-type AppProps = {
+type FbtInlineTranslationsProps = {
     token: string
     locale: string
     contributor: string
-    darkMode: boolean
+    darkMode?: boolean
+    children?: React.ReactNode | undefined
 }
 
-const swiftyperInlineTranslations = (props: AppProps) => {
+export const FbtInlineTranslationsWrapper = (
+    props: FbtInlineTranslationsProps
+) => {
+    return (
+        <SwiftyperProvider {...props}>
+            <SwiftyperServiceProvider>
+                <App>{props.children}</App>
+            </SwiftyperServiceProvider>
+        </SwiftyperProvider>
+    )
+}
+
+const swiftyperInlineTranslations = (props: FbtInlineTranslationsProps) => {
     if (props.darkMode) {
         document.documentElement.classList.add('tw-dark')
     }
 
     ReactDOM.render(
-        <SwiftyperProvider {...props}>
-            <SwiftyperServiceProvider>
-                <App />
-            </SwiftyperServiceProvider>
-        </SwiftyperProvider>,
+        <FbtInlineTranslationsWrapper {...props} />,
         document.getElementById('inline-translator')
     )
 }
-
-module.hot!.accept()
 
 // eslint-disable-next-line
 // @ts-ignore

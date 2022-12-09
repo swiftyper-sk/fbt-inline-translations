@@ -2,10 +2,11 @@
     "name": "fbt-inline-translations",
     "version": "0.1.4",
     "description": "Dialog interface for efficient application translation.",
-    "main": "./src/index.tsx",
+    "main": "./lib/index.js",
+    "types": "./lib/index.d.ts",
     "scripts": {
         "start": "webpack serve --config ./webpack.config.js --mode development",
-        "build": "webpack --mode=production && webpack --mode=production --env minified",
+        "build": "webpack --mode=production && webpack --mode=production --env minified && tsc",
         "lint": "eslint . --ext .ts,.tsx",
         "format": "prettier --write src"
     },
@@ -14,6 +15,14 @@
         "fbt",
         "translations",
         "i18n"
+    ],
+    "directories": {
+        "src": "src"
+    },
+    "files": [
+        "lib/**/*",
+        "README.md",
+        "package.json"
     ],
     "author": "Swiftyper <support@swiftyper.sk> (https://swiftyper.sk/)",
     "license": "MIT",
@@ -53,6 +62,7 @@
         "rodal": "^1.8.3",
         "style-loader": "^3.3.1",
         "swiftyper-node": "^1.0.6",
-        "typeface-roboto": "^1.1.13"
+        "typeface-roboto": "^1.1.13",
+        "typescript": "^3.7.5"
     }
 }
