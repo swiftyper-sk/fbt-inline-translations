@@ -1,6 +1,6 @@
 {
     "name": "fbt-inline-translations",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "description": "Dialog interface for efficient application translation.",
     "main": "./lib/index.js",
     "types": "./lib/index.d.ts",
