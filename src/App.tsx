@@ -39,24 +39,31 @@ class App extends React.Component<Props, State> {
     }
 
     openTranslationDialog(event: MouseEvent) {
-        const target = event.target as HTMLElement
+        let parent: HTMLElement | null = event.target as HTMLElement
 
-        if (
-            target.classList.contains('intlInlineMode_normal') ||
-            target.classList.contains('intlInlineMode_translatable') ||
-            target.classList.contains('intlInlineMode_approvable') ||
-            target.classList.contains('intlInlineMode_reportable')
-        ) {
-            const hash = target.getAttribute('data-intl-hash')
-            const locale = target.getAttribute('data-intl-locale')
+        while (parent) {
+            console.log(parent.outerHTML)
+            if (
+                parent.classList.contains('intlInlineMode_normal') ||
+                parent.classList.contains('intlInlineMode_translatable') ||
+                parent.classList.contains('intlInlineMode_approvable') ||
+                parent.classList.contains('intlInlineMode_reportable')
+            ) {
+                const hash = parent.getAttribute('data-intl-hash')
+                const locale = parent.getAttribute('data-intl-locale')
 
-            this.setState({
-                visible: true,
-                hash,
-                locale,
-            })
+                this.setState({
+                    visible: true,
+                    hash,
+                    locale,
+                })
 
-            event.preventDefault()
+                event.preventDefault()
+
+                return
+            }
+
+            parent = parent.parentElement
         }
     }
 
