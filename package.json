@@ -6,8 +6,9 @@
     "types": "./lib/index.d.ts",
     "scripts": {
         "start": "webpack serve --config ./webpack.config.js --mode development",
-        "build": "webpack --mode=production && webpack --mode=production --env minified && tsc",
+        "build": "webpack --mode=production && webpack --mode=production --env minified && tsc && npm run copy:css",
         "lint": "eslint . --ext .ts,.tsx",
+        "copy:css": "copyfiles -u 1 src/*.css lib/",
         "format": "prettier --write src"
     },
     "keywords": [
@@ -54,6 +55,7 @@
     "dependencies": {
         "@babel/preset-typescript": "^7.17.12",
         "classnames": "^2.3.1",
+        "copyfiles": "^2.4.1",
         "css-loader": "^6.7.1",
         "node-polyfill-webpack-plugin": "^1.1.4",
         "react": "^16.0.2",
