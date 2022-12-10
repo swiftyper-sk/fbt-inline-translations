@@ -17,7 +17,7 @@ type State = {
     locale: string | null
 }
 
-class App extends React.Component<Props, State> {
+class TranslationDialog extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props)
         this.state = {
@@ -77,18 +77,27 @@ class App extends React.Component<Props, State> {
             <>
                 {children}
                 <Rodal
-                    customStyles={{ height: 'auto', bottom: 'auto', top: 'auto' }}
+                    customStyles={{
+                        height: 'auto',
+                        bottom: 'auto',
+                        top: 'auto',
+                    }}
                     className="tw-flex tw-items-center tw-overflow-auto"
                     enterAnimation=" rodal-zoom-enter dark:tw-bg-gray-800 " // ugly hack
                     leaveAnimation=" rodal-fade-leave dark:tw-bg-gray-800 " // ugly hack
                     visible={this.state.visible}
                     onClose={this.hide}
                 >
-                    <TranslationCard key={hash} hash={hash} hide={this.hide} />
+                    <TranslationCard
+                        key={hash}
+                        hash={hash}
+                        visible={this.state.visible}
+                        hide={this.hide}
+                    />
                 </Rodal>
             </>
         )
     }
 }
 
-export default App
+export default TranslationDialog

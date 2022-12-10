@@ -2,7 +2,7 @@ import React, { createContext, ReactElement, useContext } from 'react'
 import { SwiftyperContextType } from '../@types/SwiftyperContextType'
 
 export const SwiftyperContext = createContext<SwiftyperContextType | null>(null)
-export const useSwiftyper = () => useContext(SwiftyperContext)
+export const useSwiftyperContext = () => useContext(SwiftyperContext)
 
 type Props = {
     children: ReactElement

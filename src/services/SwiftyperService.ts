@@ -22,11 +22,11 @@ export default class SwiftyperService {
         })
     }
 
-    vote(id: number) {
+    vote(trid: number) {
         const { contributor } = this
 
         return this.client.translations.vote({
-            trid: id,
+            trid,
             contributor,
         })
     }

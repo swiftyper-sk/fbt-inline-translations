@@ -2,17 +2,18 @@ import React, { useEffect, useState } from 'react'
 import PhraseOverview from './PhraseOverview'
 import Candidate from './Candidate'
 import Composer from './Composer'
-import { useSwiftyperService } from '../contexts/SwiftyperServiceContext'
+import { useSwiftyperServiceContext } from '../contexts/SwiftyperServiceContext'
 import { Phrase } from '../@types/Phrase'
 import { HiExclamation } from 'react-icons/hi'
 
 type Props = {
     hash: string | null
+    visible: boolean
     hide: () => void
 }
 
-export default function TranslationCard({ hash, hide }: Props) {
-    const swiftyperService = useSwiftyperService()!
+export default function TranslationCard({ hash, hide, visible }: Props) {
+    const swiftyperService = useSwiftyperServiceContext()!
     const [phrase, setPhrase] = useState<Phrase>()
     const [loading, setLoading] = useState<boolean>(true)
     const [error, setError] = useState<string | null>(null)
@@ -22,6 +23,14 @@ export default function TranslationCard({ hash, hide }: Props) {
     const [currentTranslation, setCurrentTranslation] = useState<
         string | undefined
     >()
+
+    useEffect(() => {
+        return () => {
+            if (!visible) {
+                setReload(null)
+            }
+        }
+    }, [visible])
 
     useEffect(() => {
         if (hash && reload !== false) {

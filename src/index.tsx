@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
+import TranslationDialog from './TranslationDialog'
 import { SwiftyperProvider } from './providers/swiftyper'
 import { SwiftyperServiceProvider } from './contexts/SwiftyperServiceContext'
 
@@ -9,16 +9,17 @@ type FbtInlineTranslationsProps = {
     locale: string
     contributor: string
     darkMode?: boolean
-    children?: React.ReactNode | undefined
+    children?: ReactElement | undefined
 }
 
-export const FbtInlineTranslationsWrapper = (
-    {children, ...props}: FbtInlineTranslationsProps
-) => {
+export const FbtInlineTranslationsWrapper = ({
+    children,
+    ...props
+}: FbtInlineTranslationsProps) => {
     return (
         <SwiftyperProvider {...props}>
             <SwiftyperServiceProvider>
-                <App>{children}</App>
+                <TranslationDialog>{children}</TranslationDialog>
             </SwiftyperServiceProvider>
         </SwiftyperProvider>
     )
