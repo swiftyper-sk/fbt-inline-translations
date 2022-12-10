@@ -93,6 +93,7 @@ export default function TranslationCard({ hash, hide }: Props) {
             </div>
             <Composer
                 hash={phrase!.hash}
+                glossary={phrase!.glossary}
                 translation={currentTranslation}
                 language={phrase!.locale.name}
                 loading={composerLoading}

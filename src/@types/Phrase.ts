@@ -52,7 +52,21 @@ export type Phrase = {
     project: string
     created_at: string
     translations: Translation[]
+    glossary: Term[]
     locale: {
         name: string
     }
+}
+
+export type Term = {
+    id: number
+    object: string
+    hash: string
+    translation: Translation
+    text: string
+    description: string
+    translatable: boolean
+    case_insensitive: boolean
+    part_of_speech: string
+    created_at: string
 }
