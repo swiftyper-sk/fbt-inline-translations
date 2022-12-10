@@ -26,13 +26,24 @@ export const FbtInlineTranslationsWrapper = ({
 }
 
 const swiftyperInlineTranslations = (props: FbtInlineTranslationsProps) => {
+    const elementId = `inline-translator`;
+    const container = document.getElementById(elementId);
+
+    if (! container) {
+        console.error(
+            `[fbt-inline-translations] No wrapper element found! Make sure you have a wrapper element with id \`${elementId}\`.`
+        );
+
+        return
+    }
+
     if (props.darkMode) {
         document.documentElement.classList.add('tw-dark')
     }
 
     ReactDOM.render(
         <FbtInlineTranslationsWrapper {...props} />,
-        document.getElementById('inline-translator')
+        container
     )
 }
 
