@@ -6,9 +6,12 @@
     "types": "./lib/index.d.ts",
     "scripts": {
         "start": "webpack serve --config ./webpack.config.js --mode development",
-        "build": "webpack --mode=production && webpack --mode=production --env minified && tsc && npm run copy:css",
+        "build": "npm run build:webpack && npm run ts:build && npm run tw:build && npm run copy:css",
+        "build:webpack": "webpack --mode=production && webpack --mode=production --env minified",
+        "tw:build": "tailwindcss ./src/App.css -o ./lib/App.css",
+        "ts:build": "tsc",
         "lint": "eslint . --ext .ts,.tsx",
-        "copy:css": "copyfiles -u 1 src/*.css lib/",
+        "copy:css": "copyfiles -u 1 src/rodal.css lib/",
         "format": "prettier --write src"
     },
     "keywords": [
@@ -38,9 +41,9 @@
         "@typescript-eslint/eslint-plugin": "^5.26.0",
         "@typescript-eslint/parser": "^5.26.0",
         "autoprefixer": "^10.4.7",
+        "babel-loader": "^8.2.3",
         "copyfiles": "^2.4.1",
         "css-loader": "^6.7.1",
-        "babel-loader": "^8.2.3",
         "eslint": "^8.16.0",
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-prettier": "^4.0.0",
@@ -62,11 +65,10 @@
     "dependencies": {
         "classnames": "^2.3.1",
         "react-icons": "^4.4.0",
-        "rodal": "^1.8.3",
         "swiftyper-node": "^1.0.6",
         "typeface-roboto": "^1.1.13"
     },
     "peerDependencies": {
-        "react": "^16.13.1"
+        "react": "^15 || ^16 || ^17 || ^18"
     }
 }

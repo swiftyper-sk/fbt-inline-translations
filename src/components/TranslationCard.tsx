@@ -28,6 +28,8 @@ export default function TranslationCard({ hash, hide, visible }: Props) {
         return () => {
             if (!visible) {
                 setReload(null)
+                setLoading(true)
+                setCurrentTranslation(undefined)
             }
         }
     }, [visible])

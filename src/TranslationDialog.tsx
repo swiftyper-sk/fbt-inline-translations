@@ -1,12 +1,12 @@
 import React from 'react'
 // eslint-disable-next-line
 // @ts-ignore
-import Rodal from 'rodal'
 import { Translation } from './@types/Translation'
 import TranslationCard from './components/TranslationCard'
-import 'rodal/lib/rodal.css'
+import './rodal.css'
 import 'typeface-roboto'
 import './App.css'
+import Rodal from './components/Rodal'
 
 type Props = {}
 
@@ -82,6 +82,7 @@ class TranslationDialog extends React.Component<Props, State> {
                         bottom: 'auto',
                         top: 'auto',
                     }}
+                    closeMaskOnClick={false}
                     className="tw-flex tw-items-center tw-overflow-auto"
                     enterAnimation=" rodal-zoom-enter dark:tw-bg-gray-800 " // ugly hack
                     leaveAnimation=" rodal-fade-leave dark:tw-bg-gray-800 " // ugly hack

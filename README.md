@@ -23,6 +23,54 @@ You can make translations available to your translators, users, or the entire co
 npm install fbt-inline-translations
 ```
 
+### How to add polyfills in Webpack 5
+
+Errors in the terminal will give hints on how to add the required polyfill.
+
+**Example for path module:**
+
+In your Webpack config:
+
+```javascript
+module.exports = {
+  resolve: {
+    // ...
+    fallback: {
+      "buffer": require.resolve("buffer/"),
+      "url": require.resolve("url/"),
+      "path": require.resolve("path-browserify"),
+      "http": require.resolve("stream-http"),
+      "https": require.resolve("https-browserify"),
+    },
+
+    alias: {
+      process: "process/browser",
+    },
+
+    plugins: [
+      // Work around for Buffer is undefined:
+      // https://github.com/webpack/changelog-v5/issues/10
+      new webpack.ProvidePlugin({
+        Buffer: ['buffer', 'Buffer'],
+      }),
+      new webpack.ProvidePlugin({
+        process: 'process/browser',
+      }),
+    ],
+  },
+};
+```
+
+and
+
+```cmd
+npm install buffer url path-browserify stream-http https-browserify --save-dev
+# you may need to clear your cache after this change
+rm -fr node_modules/.cache
+```
+
+Restart the Dev Server and the error will be gone. 
+
 ## 🔧 Configuration
 
 Register your FBT project on [Swiftyper Translations](https://translations.swiftyper.sk)
@@ -44,4 +92,27 @@ Add this code to your page:
         darkMode: false, // dark mode also depends on html class 'tw-dark'
     })
 </script>
+```
+
+### React usage
+
+In your application, wrap your `App` component. We recommend adding it around your root component in the `index.js` file.
+
+```js
+// src/index.js
+
+import ReactDOM from 'react-dom';
+import { FbtInlineTranslationsWrapper } from 'fbt-inline-translations';
+
+ReactDOM.render(
+  <FbtInlineTranslationsWrapper
+    token={'YOUR_API_KEY_HERE'}
+    locale={"sk_SK"} // translation locale
+    contributor={"contributor@email.com"} // contributor must be invited
+    darkMode={false} // dark mode also depends on html class 'tw-dark'
+  >
+    <App />
+  </FbtInlineTranslationsWrapper>,
+  document.getElementById('root')
+);
 ```
