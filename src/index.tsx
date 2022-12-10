@@ -13,12 +13,12 @@ type FbtInlineTranslationsProps = {
 }
 
 export const FbtInlineTranslationsWrapper = (
-    props: FbtInlineTranslationsProps
+    {children, ...props}: FbtInlineTranslationsProps
 ) => {
     return (
         <SwiftyperProvider {...props}>
             <SwiftyperServiceProvider>
-                <App>{props.children}</App>
+                <App>{children}</App>
             </SwiftyperServiceProvider>
         </SwiftyperProvider>
     )
