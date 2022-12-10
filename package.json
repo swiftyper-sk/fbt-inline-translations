@@ -1,13 +1,13 @@
 {
     "name": "fbt-inline-translations",
-    "version": "0.1.6",
+    "version": "0.2.0",
     "description": "Dialog interface for efficient application translation.",
     "main": "./lib/index.js",
     "types": "./lib/index.d.ts",
     "scripts": {
         "start": "webpack serve --config ./webpack.config.js --mode development",
-        "build": "npm run build:webpack && npm run ts:build && npm run tw:build && npm run copy:css",
-        "build:webpack": "webpack --mode=production && webpack --mode=production --env minified",
+        "build": "npm run webpack:build && npm run ts:build && npm run tw:build && npm run copy:css",
+        "webpack:build": "webpack --mode=production && webpack --mode=production --env minified",
         "tw:build": "tailwindcss ./src/App.css -o ./lib/App.css",
         "ts:build": "tsc",
         "lint": "eslint . --ext .ts,.tsx",
