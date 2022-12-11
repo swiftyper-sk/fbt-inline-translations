@@ -13,9 +13,10 @@ You can make translations available to your translators, users, or the entire co
 
 ## ℹ️ Usage notes
 
-- this library requires FBT for PHP:
+- this library requires one of these FBT frameworks:
   - [FBT for Laravel (v5.5+)](https://github.com/richardDobron/laravel-fbt)
   - [FBT for PHP (v7.0+)](https://github.com/richardDobron/fbt)
+  - [FBT for JavaScript](https://github.com/facebook/fbt)
 
 ## 📦 Installing
 
@@ -26,8 +27,6 @@ npm install fbt-inline-translations
 ### How to add polyfills in Webpack 5
 
 Errors in the terminal will give hints on how to add the required polyfill.
-
-**Example for path module:**
 
 In your Webpack config:
 
