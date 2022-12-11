@@ -69,7 +69,44 @@ npm install buffer url path-browserify stream-http https-browserify --save-dev
 rm -fr node_modules/.cache
 ```
 
-Restart the Dev Server and the error will be gone. 
+Restart the Dev Server and the error will be gone.
+
+## Instructions for JavaScript version of FBT package
+
+Copy file [fbt/InlineFbtResult.js](fbt/InlineFbtResult.js) to your project.
+
+Register custom `getFbtResult` hook:
+
+```javascript
+import { init } from "fbt";
+import FbtResult from "fbt/lib/FbtResult";
+import InlineFbtResult from "./InlineFbtResult";
+
+let inlineMode = 'NO_INLINE';
+
+if (true) { // enable inline translations
+    inlineMode = 'TRANSLATION';
+}
+
+init({
+  hooks: {
+    // ...
+    getFbtResult: (input) => {
+      if (inlineMode && inlineMode !== 'NO_INLINE') {
+        return new InlineFbtResult(
+          input.contents,
+          inlineMode,
+          input.patternString,
+          input.patternHash,
+        );
+      }
+
+      return new FbtResult(input.contents, input.errorListener);
+    },
+  },
+  // ...
+});
+```
 
 ## 🔧 Configuration
 
