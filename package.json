@@ -25,6 +25,7 @@
     },
     "files": [
         "lib/**/*",
+        "dist/**/*",
         "README.md",
         "package.json"
     ],
