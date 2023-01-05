@@ -18,10 +18,20 @@ You can make translations available to your translators, users, or the entire co
   - [FBT for PHP (v7.0+)](https://github.com/richardDobron/fbt)
   - [FBT for JavaScript](https://github.com/facebook/fbt)
 
+## 🚀 Features
+-   [x] Inline translating
+-   [x] Glossary
+-   [x] Voting
+-   [x] Dark mode
+
 ## 📦 Installing
 
-```
+**React 15 or higher only.**
+
+```shell
 npm install fbt-inline-translations
+# or
+yarn add fbt-inline-translations
 ```
 
 ### How to add polyfills in Webpack 5
@@ -109,7 +119,7 @@ init({
 
 ## 🔧 Configuration
 
-Register your FBT project on [Swiftyper Translations](https://translations.swiftyper.sk)
+Register your FBT project on [Swiftyper Translations](https://translations.swiftyper.sk).
 
 
 ### Non-React usage
