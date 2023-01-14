@@ -6,7 +6,7 @@ If you right-click on the underlined string, the translation dialog appears and 
 
 You can make translations available to your translators, users, or the entire community and make your product multilingual.
 
-**Translations can also be approved by your trusted translator(s).**
+❇️ **Translations can also be approved by your trusted translator(s).**
 
 ![Demo of FBT inline translating](https://raw.githubusercontent.com/swiftyper-sk/fbt-inline-translations/main/images/demo.gif)
 
@@ -22,11 +22,12 @@ You can make translations available to your translators, users, or the entire co
 -   [x] Inline translating
 -   [x] Glossary
 -   [x] Voting
+-   [ ] Variations
 -   [x] Dark mode
 
 ## 📦 Installing
 
-**React 15 or higher only.**
+⚠️ **React 15 or higher only.**
 
 ```shell
 npm install fbt-inline-translations
