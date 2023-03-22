@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 // eslint-disable-next-line
 // @ts-ignore
 import { Translation } from './@types/Translation'
@@ -7,8 +7,11 @@ import './rodal.css'
 import 'typeface-roboto'
 import './App.css'
 import Rodal from './components/Rodal'
+import { TranslationProvider } from './contexts/TranslationContext'
 
-type Props = {}
+type Props = {
+    children?: ReactElement | undefined
+}
 
 type State = {
     visible: boolean
@@ -70,7 +73,7 @@ class TranslationDialog extends React.Component<Props, State> {
     }
 
     render() {
-        const { hash } = this.state
+        const { hash, visible } = this.state
         const { children } = this.props
 
         return (
@@ -86,15 +89,17 @@ class TranslationDialog extends React.Component<Props, State> {
                     className="tw-flex tw-items-center tw-overflow-auto"
                     enterAnimation=" rodal-zoom-enter dark:tw-bg-gray-800 " // ugly hack
                     leaveAnimation=" rodal-fade-leave dark:tw-bg-gray-800 " // ugly hack
-                    visible={this.state.visible}
+                    visible={visible}
                     onClose={this.hide}
                 >
-                    <TranslationCard
-                        key={hash}
-                        hash={hash}
-                        visible={this.state.visible}
-                        hide={this.hide}
-                    />
+                    <TranslationProvider>
+                        <TranslationCard
+                            key={hash}
+                            hash={hash}
+                            visible={visible}
+                            hide={this.hide}
+                        />
+                    </TranslationProvider>
                 </Rodal>
             </>
         )

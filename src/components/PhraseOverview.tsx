@@ -1,11 +1,8 @@
 import React from 'react'
-import { Phrase } from '../@types/Phrase'
+import { usePhraseContext } from '../contexts/PhraseContext'
 
-type Props = {
-    phrase: Phrase
-}
-
-export default function PhraseOverview({ phrase }: Props) {
+export default function PhraseOverview() {
+    const { phrase } = usePhraseContext()!
     const { text, description } = phrase
 
     return (

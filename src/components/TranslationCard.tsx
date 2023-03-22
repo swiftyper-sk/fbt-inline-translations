@@ -5,6 +5,8 @@ import Composer from './Composer'
 import { useSwiftyperServiceContext } from '../contexts/SwiftyperServiceContext'
 import { Phrase } from '../@types/Phrase'
 import { HiExclamation } from 'react-icons/hi'
+import { PhraseProvider } from '../contexts/PhraseContext'
+import { useTranslationContext } from '../contexts/TranslationContext'
 
 type Props = {
     hash: string | null
@@ -14,29 +16,25 @@ type Props = {
 
 export default function TranslationCard({ hash, hide, visible }: Props) {
     const swiftyperService = useSwiftyperServiceContext()!
+    const { setCurrentTranslation, setRefetch, refetch } =
+        useTranslationContext()!
     const [phrase, setPhrase] = useState<Phrase>()
     const [loading, setLoading] = useState<boolean>(true)
     const [error, setError] = useState<string | null>(null)
-    const [reload, setReload] = useState<boolean | null>(null)
-    const [composerLoading, setComposerLoading] = useState<boolean>(false)
-    const [composerError, setComposerError] = useState<string | null>(null)
-    const [currentTranslation, setCurrentTranslation] = useState<
-        string | undefined
-    >()
 
     useEffect(() => {
         return () => {
             if (!visible) {
-                setReload(null)
+                setRefetch(null)
                 setLoading(true)
-                setCurrentTranslation(undefined)
+                setCurrentTranslation('')
             }
         }
     }, [visible])
 
     useEffect(() => {
-        if (hash && reload !== false) {
-            setReload(false)
+        if (hash && refetch !== false) {
+            setRefetch(false)
             setLoading(true)
             setError(null)
 
@@ -46,7 +44,7 @@ export default function TranslationCard({ hash, hide, visible }: Props) {
                 .catch(({ message }: Error) => setError(message))
                 .finally(() => setLoading(false))
         }
-    }, [hash, reload])
+    }, [hash, refetch])
 
     if (error) {
         return (
@@ -75,58 +73,18 @@ export default function TranslationCard({ hash, hide, visible }: Props) {
             </>
         )
     }
-
     return (
-        <>
-            <PhraseOverview phrase={phrase!} />
+        <PhraseProvider phrase={phrase!}>
+            <PhraseOverview />
             <div className="tw-m-0 tw-p-0 tw-divide-y tw-divide-solid tw-divide-gray-300 dark:tw-divide-gray-700 dark:tw-text-white">
-                {phrase!.translations.map((translation, index) => (
+                {phrase!.translations.map((candidate, index) => (
                     <Candidate
-                        candidate={translation}
+                        candidate={candidate}
                         key={`candidate-` + index}
-                        onClick={(translation: string) =>
-                            setCurrentTranslation(translation)
-                        }
-                        onVote={(id: number) => {
-                            setComposerLoading(true)
-                            setComposerError(null)
-
-                            swiftyperService
-                                .vote(id)
-                                .then(() => setReload(true))
-                                .catch(({ message }: Error) =>
-                                    setComposerError(message)
-                                )
-                                .finally(() => setComposerLoading(false))
-                        }}
                     />
                 ))}
             </div>
-            <Composer
-                hash={phrase!.hash}
-                glossary={phrase!.glossary}
-                translation={currentTranslation}
-                language={phrase!.locale.name}
-                loading={composerLoading}
-                error={composerError}
-                hide={hide}
-                setTranslation={setCurrentTranslation}
-                onSubmit={(translation: string, hash: string) => {
-                    setComposerLoading(true)
-                    setComposerError(null)
-
-                    swiftyperService
-                        .translate(translation, hash, phrase!)
-                        .then(() => {
-                            setReload(true)
-                            setCurrentTranslation('')
-                        })
-                        .catch(({ message }: Error) => {
-                            setComposerError(message)
-                        })
-                        .finally(() => setComposerLoading(false))
-                }}
-            />
-        </>
+            <Composer hide={hide} />
+        </PhraseProvider>
     )
 }

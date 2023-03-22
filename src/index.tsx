@@ -26,13 +26,13 @@ export const FbtInlineTranslationsWrapper = ({
 }
 
 const swiftyperInlineTranslations = (props: FbtInlineTranslationsProps) => {
-    const elementId = `inline-translator`;
-    const container = document.getElementById(elementId);
+    const elementId = `inline-translator`
+    const container = document.getElementById(elementId)
 
-    if (! container) {
+    if (!container) {
         console.error(
             `[fbt-inline-translations] No wrapper element found! Make sure you have a wrapper element with id \`${elementId}\`.`
-        );
+        )
 
         return
     }
@@ -41,10 +41,7 @@ const swiftyperInlineTranslations = (props: FbtInlineTranslationsProps) => {
         document.documentElement.classList.add('tw-dark')
     }
 
-    ReactDOM.render(
-        <FbtInlineTranslationsWrapper {...props} />,
-        container
-    )
+    ReactDOM.render(<FbtInlineTranslationsWrapper {...props} />, container)
 }
 
 // eslint-disable-next-line
