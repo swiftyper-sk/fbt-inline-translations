@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 // eslint-disable-next-line
 // @ts-ignore
-import { Translation } from './@types/Translation'
+import { Translation } from './types/Translation'
 import TranslationCard from './components/TranslationCard'
 import './rodal.css'
 import 'typeface-roboto'

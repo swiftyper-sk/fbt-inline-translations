@@ -1,4 +1,4 @@
-import { Translation } from '../@types/Translation'
+import { Translation } from '../types/Translation'
 import { HiCheckCircle, HiOutlineCheckCircle } from 'react-icons/hi'
 import React from 'react'
 import { useTranslationContext } from '../contexts/TranslationContext'

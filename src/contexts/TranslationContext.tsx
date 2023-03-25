@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Translation } from '../@types/Translation'
+import { Translation } from '../types/Translation'
 
 type TranslationContextType = {
     translation: Translation | null

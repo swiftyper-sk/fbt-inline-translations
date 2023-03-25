@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Phrase } from '../@types/Phrase'
+import { Phrase } from '../types/Phrase'
 
 type PhraseContextType = {
     phrase: Phrase

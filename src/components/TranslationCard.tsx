@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import PhraseOverview from './PhraseOverview'
 import Candidate from './Candidate'
-import Composer from './Composer'
+import TranslationComposer from './TranslationComposer'
 import { useSwiftyperServiceContext } from '../contexts/SwiftyperServiceContext'
-import { Phrase } from '../@types/Phrase'
+import { Phrase } from '../types/Phrase'
 import { HiExclamation } from 'react-icons/hi'
 import { PhraseProvider } from '../contexts/PhraseContext'
 import { useTranslationContext } from '../contexts/TranslationContext'
+import Glossary from './Glossary'
+import ActionButtons from './ActionButtons'
 
 type Props = {
     hash: string | null
@@ -73,6 +75,9 @@ export default function TranslationCard({ hash, hide, visible }: Props) {
             </>
         )
     }
+
+    const { glossary } = phrase!
+
     return (
         <PhraseProvider phrase={phrase!}>
             <PhraseOverview />
@@ -84,7 +89,11 @@ export default function TranslationCard({ hash, hide, visible }: Props) {
                     />
                 ))}
             </div>
-            <Composer hide={hide} />
+            <div>
+                <TranslationComposer />
+                {glossary.length > 0 && <Glossary glossary={glossary} />}
+                <ActionButtons hide={hide} />
+            </div>
         </PhraseProvider>
     )
 }

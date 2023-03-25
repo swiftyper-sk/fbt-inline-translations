@@ -1,5 +1,5 @@
 import React, { createContext, ReactElement, useContext } from 'react'
-import { SwiftyperContextType } from '../@types/SwiftyperContextType'
+import { SwiftyperContextType } from '../types/SwiftyperContextType'
 
 export const SwiftyperContext = createContext<SwiftyperContextType | null>(null)
 export const useSwiftyperContext = () => useContext(SwiftyperContext)
