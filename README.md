@@ -132,7 +132,7 @@ Add this code to your page:
 
 <script src="https://cdn.jsdelivr.net/npm/fbt-inline-translations/dist/bundle.js"></script>
 <script>
-    swiftyperInlineTranslations({
+    swiftyperInlineTranslations.default({
         token: 'YOUR_API_KEY_HERE',
         locale: 'sk_SK', // translation locale
         contributor: 'contributor@email.com', // contributor must be invited

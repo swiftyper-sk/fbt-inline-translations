@@ -44,8 +44,4 @@ const swiftyperInlineTranslations = (props: FbtInlineTranslationsProps) => {
     ReactDOM.render(<FbtInlineTranslationsWrapper {...props} />, container)
 }
 
-// eslint-disable-next-line
-// @ts-ignore
-window.swiftyperInlineTranslations = swiftyperInlineTranslations
-
 export default swiftyperInlineTranslations

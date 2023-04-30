@@ -29,6 +29,8 @@ module.exports = {
         },
     },
     output: {
+        libraryTarget: 'var',
+        library: 'swiftyperInlineTranslations',
         path: path.resolve(__dirname, './dist'),
         filename: 'bundle.js',
     },
