@@ -11,12 +11,13 @@ You can make translations available to your translators, users, or the entire co
 ![Demo of FBT inline translating](https://raw.githubusercontent.com/swiftyper-sk/fbt-inline-translations/main/images/demo.gif)
 
 
-## ℹ️ Usage notes
+## ℹ️ Usage Notes
 
-- this library requires one of these FBT frameworks:
+- This library requires one of these FBT frameworks:
   - [FBT for Laravel (v5.5+)](https://github.com/richardDobron/laravel-fbt)
   - [FBT for PHP (v7.0+)](https://github.com/richardDobron/fbt)
   - [FBT for JavaScript](https://github.com/facebook/fbt)
+  - [FBTee for JavaScript](https://github.com/nkzw-tech/fbtee)
 
 ## 🚀 Features
 -   [x] Inline translating
@@ -73,7 +74,7 @@ module.exports = {
 
 and
 
-```cmd
+```shell
 npm install buffer url path-browserify stream-http https-browserify --save-dev
 # you may need to clear your cache after this change
 rm -fr node_modules/.cache
@@ -122,8 +123,7 @@ init({
 
 Register your FBT project on [Swiftyper Translations](https://translations.swiftyper.sk).
 
-
-### Non-React usage
+### Non-React Usage
 
 Add this code to your page:
 
@@ -132,7 +132,7 @@ Add this code to your page:
 
 <script src="https://cdn.jsdelivr.net/npm/fbt-inline-translations/dist/bundle.js"></script>
 <script>
-    swiftyperInlineTranslations.default({
+    swiftyperInlineTranslations({
         token: 'YOUR_API_KEY_HERE',
         locale: 'sk_SK', // translation locale
         contributor: 'contributor@email.com', // contributor must be invited
@@ -141,7 +141,7 @@ Add this code to your page:
 </script>
 ```
 
-### React usage
+### React Usage
 
 In your application, wrap your `App` component. We recommend adding it around your root component in the `index.js` file.
 
@@ -162,4 +162,9 @@ ReactDOM.render(
   </FbtInlineTranslationsWrapper>,
   document.getElementById('root')
 );
+```
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 ```
