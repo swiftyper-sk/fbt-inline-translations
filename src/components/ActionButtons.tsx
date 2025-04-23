@@ -27,10 +27,10 @@ const Button: React.FC<ButtonProps> = ({ children, className, ...rest }) => {
 }
 
 type ActionButtonsProps = {
-    hide: () => void
+    handleClose: () => void
 }
 
-const ActionButtons: React.FC<ActionButtonsProps> = ({ hide }) => {
+const ActionButtons: React.FC<ActionButtonsProps> = ({ handleClose }) => {
     const swiftyperService = useSwiftyperServiceContext()!
     const {
         currentTranslation,
@@ -64,7 +64,7 @@ const ActionButtons: React.FC<ActionButtonsProps> = ({ hide }) => {
             <div className="tw-flex tw-justify-end tw-pt-2 tw-mt-2 tw-gap-2 tw-border tw-border-solid tw-border-b-0 tw-border-x-0 tw-border-gray-300 dark:tw-border-gray-700">
                 <Button
                     className="tw-text-dark tw-bg-transparent dark:tw-text-white focus:tw-outline-none"
-                    onClick={hide}
+                    onClick={handleClose}
                 >
                     Close
                 </Button>

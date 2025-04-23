@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback, useMemo } from 'react'
 import PhraseOverview from './PhraseOverview'
 import Candidate from './Candidate'
 import TranslationComposer from './TranslationComposer'
@@ -37,21 +37,31 @@ const TranslationCard: React.FC<TranslationCardProps> = ({
     }, [visible])
 
     useEffect(() => {
-        if (hash && refetch !== false) {
-            setRefetch(false)
-            setLoading(true)
-            setError(null)
+        setRefetch(true)
+    }, [hash])
 
-            swiftyperService
-                .get(hash)
-                .then(setPhrase)
-                .catch(({ message }: Error) => setError(message))
-                .finally(() => setLoading(false))
+    useEffect(() => {
+        if (hash && refetch) {
+            const fetchData = async () => {
+                try {
+                    setLoading(true)
+                    setError(null)
+                    const phraseData = await swiftyperService.get(hash)
+                    setPhrase(phraseData)
+                } catch (error) {
+                    setError((error as Error).message)
+                } finally {
+                    setLoading(false)
+                    setRefetch(false)
+                }
+            }
+
+            fetchData()
         }
-    }, [hash, refetch])
+    }, [hash, refetch, swiftyperService, setRefetch])
 
-    if (error) {
-        return (
+    const renderErrorState = useCallback(
+        () => (
             <>
                 <div className="tw-mx-auto tw-flex tw-items-center tw-justify-center tw-h-12 tw-w-12 tw-rounded-full tw-bg-red-100">
                     <HiExclamation className="tw-h-6 tw-w-6 tw-text-red-600" />
@@ -62,11 +72,12 @@ const TranslationCard: React.FC<TranslationCardProps> = ({
                     </h3>
                 </div>
             </>
-        )
-    }
+        ),
+        [error]
+    )
 
-    if (loading && !phrase) {
-        return (
+    const renderLoadingState = useCallback(
+        () => (
             <>
                 <div className="tw-mx-auto tw-flex tw-items-center tw-justify-center tw-h-12 tw-w-12 loader" />
                 <div className="tw-mt-3 tw-text-center sm:tw-mt-5">
@@ -75,29 +86,39 @@ const TranslationCard: React.FC<TranslationCardProps> = ({
                     </h3>
                 </div>
             </>
-        )
-    }
-
-    const { glossary } = phrase!
-
-    return (
-        <PhraseProvider phrase={phrase!}>
-            <PhraseOverview />
-            <div className="tw-m-0 tw-p-0 tw-divide-y tw-divide-solid tw-divide-gray-300 dark:tw-divide-gray-700 dark:tw-text-white">
-                {phrase!.translations.map((candidate, index) => (
-                    <Candidate
-                        candidate={candidate}
-                        key={`candidate-` + index}
-                    />
-                ))}
-            </div>
-            <div>
-                <TranslationComposer />
-                {glossary.length > 0 && <Glossary glossary={glossary} />}
-                <ActionButtons hide={hide} />
-            </div>
-        </PhraseProvider>
+        ),
+        []
     )
+
+    const renderContent = useMemo(() => {
+        if (!phrase) return null
+
+        const { glossary, translations } = phrase
+
+        return (
+            <PhraseProvider phrase={phrase}>
+                <PhraseOverview />
+                <div className="tw-m-0 tw-p-0 tw-divide-y tw-divide-solid tw-divide-gray-300 dark:tw-divide-gray-700 dark:tw-text-white">
+                    {translations.map((candidate, index) => (
+                        <Candidate
+                            candidate={candidate}
+                            key={`candidate-${index}`}
+                        />
+                    ))}
+                </div>
+                <div>
+                    <TranslationComposer />
+                    {glossary.length > 0 && <Glossary glossary={glossary} />}
+                    <ActionButtons handleClose={hide} />
+                </div>
+            </PhraseProvider>
+        )
+    }, [phrase, hide])
+
+    if (error) return renderErrorState()
+    if (loading && !phrase) return renderLoadingState()
+
+    return renderContent
 }
 
 export default TranslationCard
