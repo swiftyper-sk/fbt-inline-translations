@@ -8,6 +8,8 @@ You can make translations available to your translators, users, or the entire co
 
 ❇️ **Translations can also be approved by your trusted translator(s).**
 
+## 👀 Preview
+
 ![Demo of FBT inline translating](https://raw.githubusercontent.com/swiftyper-sk/fbt-inline-translations/main/images/demo.gif)
 
 
@@ -19,16 +21,19 @@ You can make translations available to your translators, users, or the entire co
   - [FBT for JavaScript](https://github.com/facebook/fbt)
   - [FBTee for JavaScript](https://github.com/nkzw-tech/fbtee)
 
-## 🚀 Features
--   [x] Inline translating
--   [x] Glossary
--   [x] Voting
--   [ ] Variations
--   [x] Dark mode
+## ✨ Key Features
+
+- 📝 **Inline**: translating for real-time context
+- 📚 **Glossary**: support for consistent terminology
+- 👍 **Voting**: on translation options
+- 🔄 **Variations**: for dynamic content
+- 🌙 **Dark mode**: to match your theme
 
 ## 📦 Installing
 
 ⚠️ **React 15 or higher only.**
+
+Install the widget via npm or yarn:
 
 ```shell
 npm install fbt-inline-translations
@@ -36,7 +41,7 @@ npm install fbt-inline-translations
 yarn add fbt-inline-translations
 ```
 
-### How to add polyfills in Webpack 5
+### How to Add Polyfills in Webpack 5
 
 Errors in the terminal will give hints on how to add the required polyfill.
 
@@ -82,7 +87,7 @@ rm -fr node_modules/.cache
 
 Restart the Dev Server and the error will be gone.
 
-## Instructions for JavaScript version of FBT package
+## Instructions for JavaScript Version of FBT Package
 
 Copy file [fbt/InlineFbtResult.js](fbt/InlineFbtResult.js) to your project.
 
@@ -122,6 +127,14 @@ init({
 ## 🔧 Configuration
 
 Register your FBT project on [Swiftyper Translations](https://translations.swiftyper.sk).
+
+
+| **Option**                | **Type** | **Description**                                                     |
+|---------------------------|----------|---------------------------------------------------------------------|
+| `apiKey`                  | string   | API key for authenticating with the help center.                    |
+| `locale`                  | string   | Locale setting for the translation widget (e.g., `en_US`, `de_DE`). |
+| `contributor`             | string   | Contributor email for authentication.                               |
+| `darkMode`                | boolean  | Dark mode theme.                                                    |
 
 ### Non-React Usage
 
@@ -164,7 +177,12 @@ ReactDOM.render(
 );
 ```
 
-## License
+## 🧪 Testing
+
+```sh
+npm run dev
+```
+
+## 📜 License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-```
