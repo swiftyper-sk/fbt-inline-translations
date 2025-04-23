@@ -33,7 +33,7 @@ You can make translations available to your translators, users, or the entire co
 
 ⚠️ **React 15 or higher only.**
 
-Install the widget via npm or yarn:
+Install the plugin via npm or yarn:
 
 ```shell
 npm install fbt-inline-translations
@@ -136,6 +136,8 @@ Register your FBT project on [Swiftyper Translations](https://translations.swift
 | `contributor`             | string   | Contributor email for authentication.                               |
 | `darkMode`                | boolean  | Dark mode theme.                                                    |
 
+## ⚡️ Quick Start
+
 ### Non-React Usage
 
 Add this code to your page:
@@ -182,6 +184,10 @@ ReactDOM.render(
 ```sh
 npm run dev
 ```
+
+## 🌟 Contributing
+
+We welcome contributions! If you'd like to help improve this project, feel free to open an issue or submit a pull request.
 
 ## 📜 License
 
