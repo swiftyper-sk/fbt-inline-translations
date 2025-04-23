@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import TranslationDialog from './TranslationDialog'
 import { SwiftyperProvider } from './providers/swiftyper'
 import { SwiftyperServiceProvider } from './providers/SwiftyperServiceProvider'
@@ -41,7 +41,8 @@ const swiftyperInlineTranslations = (props: FbtInlineTranslationsProps) => {
         document.documentElement.classList.add('tw-dark')
     }
 
-    ReactDOM.render(<FbtInlineTranslationsWrapper {...props} />, container)
+    const root = ReactDOM.createRoot(container)
+    root.render(<FbtInlineTranslationsWrapper {...props} />)
 }
 
 export default swiftyperInlineTranslations
