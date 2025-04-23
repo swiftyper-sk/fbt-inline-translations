@@ -1,10 +1,10 @@
 import React from 'react'
 import { HiExclamation } from 'react-icons/hi'
 import classNames from 'classnames'
-import { usePhraseContext } from '../contexts/PhraseContext'
-import { useTranslationContext } from '../contexts/TranslationContext'
+import { usePhraseContext } from '@/contexts/PhraseContext'
+import { useTranslationContext } from '@/contexts/TranslationContext'
 
-export default function TranslationComposer() {
+const TranslationComposer: React.FC = () => {
     const {
         currentTranslation,
         setCurrentTranslation,
@@ -22,7 +22,7 @@ export default function TranslationComposer() {
     return (
         <div>
             <textarea
-                placeholder={`Type your translation in ` + languageName}
+                placeholder={`Type your translation in ${languageName}`}
                 value={currentTranslation}
                 className={classNames(
                     'tw-max-w-lg tw-mt-3 tw-mb-1 tw-p-3 dark:tw-bg-gray-900 dark:tw-text-gray-300 dark:tw-border-gray-900 tw-resize-y tw-outline-none tw-box-border tw-shadow-sm tw-block tw-w-full focus:!tw-ring-blue-500 focus:!tw-border-blue-500 sm:tw-text-sm tw-border tw-border-gray-300 tw-rounded-md',
@@ -42,3 +42,5 @@ export default function TranslationComposer() {
         </div>
     )
 }
+
+export default TranslationComposer

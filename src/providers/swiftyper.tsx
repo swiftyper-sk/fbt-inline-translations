@@ -1,10 +1,10 @@
 import React, { createContext, ReactElement, useContext } from 'react'
-import { SwiftyperContextType } from '../types/SwiftyperContextType'
+import { SwiftyperContextType } from '@/types/SwiftyperContextType'
 
 export const SwiftyperContext = createContext<SwiftyperContextType | null>(null)
 export const useSwiftyperContext = () => useContext(SwiftyperContext)
 
-type Props = {
+type SwiftyperProviderProps = {
     children: ReactElement
     token: string
     locale: string
@@ -12,7 +12,10 @@ type Props = {
     darkMode?: boolean
 }
 
-export const SwiftyperProvider = ({ children, ...props }: Props) => {
+export const SwiftyperProvider = ({
+    children,
+    ...props
+}: SwiftyperProviderProps) => {
     return (
         <SwiftyperContext.Provider value={props}>
             {children}

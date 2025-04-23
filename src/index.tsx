@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import ReactDOM from 'react-dom'
 import TranslationDialog from './TranslationDialog'
 import { SwiftyperProvider } from './providers/swiftyper'
-import { SwiftyperServiceProvider } from './contexts/SwiftyperServiceContext'
+import { SwiftyperServiceProvider } from './providers/SwiftyperServiceProvider'
 
 type FbtInlineTranslationsProps = {
     token: string

@@ -1,4 +1,4 @@
-import { Phrase } from '../types/Phrase'
+import { Phrase } from '@/types/Phrase'
 // eslint-disable-next-line
 // @ts-ignore
 import { Swiftyper } from 'swiftyper-node'

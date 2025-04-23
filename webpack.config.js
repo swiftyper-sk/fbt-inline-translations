@@ -23,6 +23,9 @@ module.exports = {
         ],
     },
     resolve: {
+        alias: {
+            "@": path.resolve(__dirname, "./src/"),
+        },
         extensions: ['.ts', '.tsx', '...'],
         fallback: {
             path: require.resolve('path-browserify'),

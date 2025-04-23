@@ -5,9 +5,9 @@ import { Translation } from './types/Translation'
 import TranslationCard from './components/TranslationCard'
 import './rodal.css'
 import 'typeface-roboto'
-import './App.css'
+import './index.css'
 import Rodal from './components/Rodal'
-import { TranslationProvider } from './contexts/TranslationContext'
+import { TranslationProvider } from './providers/TranslationProvider'
 
 type Props = {
     children?: ReactElement | undefined

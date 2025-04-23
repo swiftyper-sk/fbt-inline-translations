@@ -1,7 +1,7 @@
 import React from 'react'
-import { useSwiftyperServiceContext } from '../contexts/SwiftyperServiceContext'
-import { useTranslationContext } from '../contexts/TranslationContext'
-import { usePhraseContext } from '../contexts/PhraseContext'
+import { useSwiftyperServiceContext } from '@/contexts/SwiftyperServiceContext'
+import { useTranslationContext } from '@/contexts/TranslationContext'
+import { usePhraseContext } from '@/contexts/PhraseContext'
 import classNames from 'classnames'
 
 type ButtonProps = {
@@ -11,7 +11,7 @@ type ButtonProps = {
     disabled?: boolean
 }
 
-const Button = ({ children, className, ...rest }: ButtonProps) => {
+const Button: React.FC<ButtonProps> = ({ children, className, ...rest }) => {
     return (
         <button
             type="button"
@@ -26,11 +26,11 @@ const Button = ({ children, className, ...rest }: ButtonProps) => {
     )
 }
 
-type Props = {
+type ActionButtonsProps = {
     hide: () => void
 }
 
-export default function ActionButtons({ hide }: Props) {
+const ActionButtons: React.FC<ActionButtonsProps> = ({ hide }) => {
     const swiftyperService = useSwiftyperServiceContext()!
     const {
         currentTranslation,
@@ -71,7 +71,7 @@ export default function ActionButtons({ hide }: Props) {
                 <Button
                     className="tw-text-white tw-bg-blue-600 hover:tw-bg-blue-700"
                     disabled={composerLoading}
-                    onClick={() => handleSubmit()}
+                    onClick={handleSubmit}
                 >
                     Submit
                 </Button>
@@ -79,3 +79,5 @@ export default function ActionButtons({ hide }: Props) {
         </div>
     )
 }
+
+export default ActionButtons

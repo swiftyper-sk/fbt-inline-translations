@@ -1,7 +1,7 @@
 import React from 'react'
-import { usePhraseContext } from '../contexts/PhraseContext'
+import { usePhraseContext } from '@/contexts/PhraseContext'
 
-export default function PhraseOverview() {
+const PhraseOverview: React.FC = () => {
     const { phrase } = usePhraseContext()!
     const { text, description } = phrase
 
@@ -16,3 +16,5 @@ export default function PhraseOverview() {
         </div>
     )
 }
+
+export default PhraseOverview

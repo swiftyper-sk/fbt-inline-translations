@@ -1,14 +1,14 @@
-import { Translation } from '../types/Translation'
+import { Translation } from '@/types/Translation'
 import { HiCheckCircle, HiOutlineCheckCircle } from 'react-icons/hi'
 import React from 'react'
-import { useTranslationContext } from '../contexts/TranslationContext'
-import { useSwiftyperServiceContext } from '../contexts/SwiftyperServiceContext'
+import { useTranslationContext } from '@/contexts/TranslationContext'
+import { useSwiftyperServiceContext } from '@/contexts/SwiftyperServiceContext'
 
-type Props = {
+type CandidateProps = {
     candidate: Translation
 }
 
-export default function Candidate({ candidate }: Props) {
+const Candidate: React.FC<CandidateProps> = ({ candidate }) => {
     const swiftyperService = useSwiftyperServiceContext()!
     const {
         setCurrentTranslation,
@@ -35,12 +35,12 @@ export default function Candidate({ candidate }: Props) {
             {candidate.voted ? (
                 <HiCheckCircle
                     className="tw-text-xl tw-text-blue-600 tw-min-w-[20px]"
-                    onClick={() => handleVote()}
+                    onClick={handleVote}
                 />
             ) : (
                 <HiOutlineCheckCircle
                     className="tw-text-xl tw-text-gray-500 tw-min-w-[20px]"
-                    onClick={() => handleVote()}
+                    onClick={handleVote}
                 />
             )}
             <span
@@ -52,3 +52,5 @@ export default function Candidate({ candidate }: Props) {
         </div>
     )
 }
+
+export default Candidate

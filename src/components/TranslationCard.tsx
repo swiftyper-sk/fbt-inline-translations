@@ -2,21 +2,25 @@ import React, { useEffect, useState } from 'react'
 import PhraseOverview from './PhraseOverview'
 import Candidate from './Candidate'
 import TranslationComposer from './TranslationComposer'
-import { useSwiftyperServiceContext } from '../contexts/SwiftyperServiceContext'
-import { Phrase } from '../types/Phrase'
+import { useSwiftyperServiceContext } from '@/contexts/SwiftyperServiceContext'
+import { Phrase } from '@/types/Phrase'
 import { HiExclamation } from 'react-icons/hi'
-import { PhraseProvider } from '../contexts/PhraseContext'
-import { useTranslationContext } from '../contexts/TranslationContext'
+import { PhraseProvider } from '@/providers/PhraseProvider'
+import { useTranslationContext } from '@/contexts/TranslationContext'
 import Glossary from './Glossary'
 import ActionButtons from './ActionButtons'
 
-type Props = {
+type TranslationCardProps = {
     hash: string | null
     visible: boolean
     hide: () => void
 }
 
-export default function TranslationCard({ hash, hide, visible }: Props) {
+const TranslationCard: React.FC<TranslationCardProps> = ({
+    hash,
+    hide,
+    visible,
+}) => {
     const swiftyperService = useSwiftyperServiceContext()!
     const { setCurrentTranslation, setRefetch, refetch } =
         useTranslationContext()!
@@ -25,12 +29,10 @@ export default function TranslationCard({ hash, hide, visible }: Props) {
     const [error, setError] = useState<string | null>(null)
 
     useEffect(() => {
-        return () => {
-            if (!visible) {
-                setRefetch(null)
-                setLoading(true)
-                setCurrentTranslation('')
-            }
+        if (!visible) {
+            setRefetch(null)
+            setLoading(true)
+            setCurrentTranslation('')
         }
     }, [visible])
 
@@ -97,3 +99,5 @@ export default function TranslationCard({ hash, hide, visible }: Props) {
         </PhraseProvider>
     )
 }
+
+export default TranslationCard

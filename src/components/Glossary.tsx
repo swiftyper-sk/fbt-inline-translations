@@ -1,11 +1,11 @@
 import React from 'react'
-import { Term } from '../types/Phrase'
+import { Term } from '@/types/Phrase'
 
-type Props = {
+type GlossaryProps = {
     glossary: Term[]
 }
 
-export default function Glossary({ glossary }: Props) {
+const Glossary: React.FC<GlossaryProps> = ({ glossary }) => {
     return (
         <div>
             <h4 className="tw-text-gray-800 dark:tw-text-gray-500 tw-mt-4 tw-mb-2">
@@ -30,3 +30,5 @@ export default function Glossary({ glossary }: Props) {
         </div>
     )
 }
+
+export default Glossary
