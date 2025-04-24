@@ -1,4 +1,4 @@
-# 👽 Inline translations for FBT
+# 👽 Inline Translations for FBT
 
 The extension serves to effectively translate your application using inline translations so that you can view strings you are
 translating in context.
@@ -13,9 +13,9 @@ You can make translations available to your translators, users, or the entire co
 ![Demo of FBT inline translating](https://raw.githubusercontent.com/swiftyper-sk/fbt-inline-translations/main/images/demo.gif)
 
 
-## ℹ️ Usage Notes
+## ℹ️ Prerequisites
 
-- This library requires one of these FBT frameworks:
+This library requires one of the following FBT frameworks:
   - [FBT for Laravel (v5.5+)](https://github.com/richardDobron/laravel-fbt)
   - [FBT for PHP (v7.0+)](https://github.com/richardDobron/fbt)
   - [FBT for JavaScript](https://github.com/facebook/fbt)
@@ -27,15 +27,15 @@ You can make translations available to your translators, users, or the entire co
 - 📚 **Glossary**: support for consistent terminology
 - 👍 **Voting**: on translation options
 - 🔄 **Variations**: for dynamic content
-- 🌙 **Dark mode**: to match your theme
+- 🌙 **Dark Mode**: to match your theme
 
-## 📦 Installing
+## 📦 Installation
 
-⚠️ **React 15 or higher only.**
+⚠️ **React 15 or higher is required.**
 
-Install the plugin via npm or yarn:
+Install the plugin using npm or yarn:
 
-```shell
+```bash
 npm install fbt-inline-translations
 # or
 yarn add fbt-inline-translations
@@ -131,8 +131,8 @@ Register your FBT project on [Swiftyper Translations](https://translations.swift
 
 | **Option**                | **Type** | **Description**                                                     |
 |---------------------------|----------|---------------------------------------------------------------------|
-| `apiKey`                  | string   | API key for authenticating with the help center.                    |
-| `locale`                  | string   | Locale setting for the translation widget (e.g., `en_US`, `de_DE`). |
+| `apiKey`                  | string   | API key for authenticating with the translation service.                    |
+| `locale`                  | string   | Locale setting for translations (e.g., `en_US`, `de_DE`). |
 | `contributor`             | string   | Contributor email for authentication.                               |
 | `darkMode`                | boolean  | Dark mode theme.                                                    |
 
@@ -140,14 +140,14 @@ Register your FBT project on [Swiftyper Translations](https://translations.swift
 
 ### Non-React Usage
 
-Add this code to your page:
+Include the following code snippet in your HTML page:
 
 ```html
 <div id="inline-translator"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/fbt-inline-translations/dist/bundle.js"></script>
 <script>
-    swiftyperInlineTranslations({
+    swiftyperInlineTranslations.default({
         token: 'YOUR_API_KEY_HERE',
         locale: 'sk_SK', // translation locale
         contributor: 'contributor@email.com', // contributor must be invited
@@ -160,7 +160,7 @@ Add this code to your page:
 
 In your application, wrap your `App` component. We recommend adding it around your root component in the `index.js` file.
 
-```js
+```javascript
 // src/index.js
 
 import ReactDOM from 'react-dom';
@@ -181,8 +181,8 @@ ReactDOM.render(
 
 ## 🧪 Testing
 
-```sh
-npm run dev
+```bash
+npm run start
 ```
 
 ## 🌟 Contributing
